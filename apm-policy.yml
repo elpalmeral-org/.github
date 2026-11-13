@@ -3,16 +3,15 @@
 # agentes, servidores MCP y herramientas se pueden instalar. Se cambia por PR en este repo.
 # El esquema es experimental en APM: la plataforma fija la versión de APM en CI (0.35.0).
 name: "Política de agentes de elpalmeral-org"
-version: "1.0.0"
+version: "1.1.0"
 enforcement: block
 
 dependencies:
   # Solo paquetes de la propia organización.
   allow:
     - "elpalmeral-org/**"
-  # El harness corporativo es obligatorio en todo repo que use APM.
-  require:
-    - "elpalmeral-org/platform-harness"
+  # Que cada repo de producto USE el harness no se exige aquí (el propio repo del harness no puede
+  # depender de sí mismo): lo exige la política de merge (platform-harness/policy/opa, check harness-ok).
   # Siempre una versión cerrada: tag o SHA, nunca una rama.
   require_pinned_constraint: true
   max_depth: 3
